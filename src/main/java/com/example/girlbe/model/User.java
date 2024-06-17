@@ -4,6 +4,8 @@ import com.example.girlbe.model.enums.Rank;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name="Users")
@@ -56,14 +58,13 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    /*
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Experiment> experiments;
 
-    public void addExperiment(Experiment experiment) {this.experiments.add(experiment);}
+    public void addExperiment(Experiment experiment) {this.experiments.add(experiment); this.ongoingExp++;}
 
     public void removeExperiment(Experiment experiment) {this.experiments.remove(experiment);}
 
+    public void completeExperiment(){this.ongoingExp--; this.completedExp++;}
 
-     */
 }

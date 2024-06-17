@@ -2,7 +2,9 @@ package com.example.girlbe.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 @Builder
 public class ExperimentResponse {
@@ -10,14 +12,19 @@ public class ExperimentResponse {
     private String name;
     private String date;
     private String state;
-    private Integer model;
+    private String model;
     private String instances;
-    private Integer epsilon;
-    private Integer decay;
-    private Integer alpha;
-    private Integer discount;
-    private Integer runs;
-    private Integer epochs;
-    private Integer limit;
-    private Boolean generate_graph;
+    private String epsilon;
+    private String decay;
+    private String alpha;
+    private String discount;
+    private String runs;
+    private String epochs;
+    private String limit;
+    private String generateGraph;
+    private String optimisation;
+    private String time;
+    private String qSize;
+    private String percentage;
+    private String png;
 }

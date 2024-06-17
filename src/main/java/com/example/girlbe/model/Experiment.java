@@ -4,6 +4,7 @@ import com.example.girlbe.model.enums.ExperimentState;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.File;
 import java.util.Date;
 
 @Entity
@@ -37,32 +38,52 @@ public class Experiment {
     private ExperimentState state;
 
     @Column(name = "model")
-    private Integer model;
+    private String model;
 
     @Column(name = "instances")
     private String instances;
 
     @Column(name = "epsilon")
-    private Integer epsilon;
+    private String epsilon;
 
     @Column(name = "decay")
-    private Integer decay;
+    private String decay;
 
     @Column(name = "alpha")
-    private Integer alpha;
+    private String alpha;
 
     @Column(name = "discount")
-    private Integer discount;
+    private String discount;
 
     @Column(name = "runs")
-    private Integer runs;
+    private String runs;
 
     @Column(name = "epochs")
-    private Integer epochs;
+    private String epochs;
 
     @Column(name = "experiment_limit")
-    private Integer limit;
+    private String limit;
 
     @Column(name = "generate_graph")
-    private Boolean generate_graph;
+    private String generateGraph;
+
+    @Column(name = "optimisation")
+    private String optimisation;
+
+    @Column(name = "graph")
+    private String graph;
+
+    @Column(name = "time")
+    private String time;
+
+    @Column(name = "qSize")
+    private String qSize;
+
+    @Column(name = "percentage")
+    private String percentage;
+
+    @Column(name = "png")
+    private File png;
+
+
 }

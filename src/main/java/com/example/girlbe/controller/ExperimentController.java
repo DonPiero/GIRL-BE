@@ -5,9 +5,14 @@ import com.example.girlbe.dto.request.ExperimentCreateRequest;
 import com.example.girlbe.dto.response.ExperimentResponse;
 import com.example.girlbe.service.ExperimentService;
 import lombok.AllArgsConstructor;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -26,11 +31,10 @@ public class ExperimentController {
     public ExperimentResponse getExperimentById(@PathVariable Long id) {
         return ExperimentAssembler.createExperimentResponse(experimentService.getExperimentById(id));
     }
-
     @PostMapping(path = "/create")
-    public ExperimentResponse createExperiment(@RequestBody ExperimentCreateRequest experimentCreateRequest) {
+    public List<ExperimentResponse> createExperiment(@RequestBody ExperimentCreateRequest experimentCreateRequest) {
         Long id = 11L;
-        return ExperimentAssembler.createExperimentResponse(experimentService.createExperiment(experimentCreateRequest, id));
+        return ExperimentAssembler.createExperimentResponseList(experimentService.createExperiment(experimentCreateRequest, id));
     }
 
     @DeleteMapping(path = "/{id}")

@@ -6,6 +6,8 @@ import com.example.girlbe.dto.response.UserResponse;
 import com.example.girlbe.model.User;
 import com.example.girlbe.model.enums.Rank;
 
+import java.util.ArrayList;
+
 public class UserAssembler {
 
     public static User createUser(UserSignUpRequest userSignUpRequest) {
@@ -15,6 +17,7 @@ public class UserAssembler {
         user.setCompletedExp(0);
         user.setOngoingExp(0);
         user.setRank(Rank.BEGINNER);
+        user.setExperiments(new ArrayList<>());
         return user;
     }
 

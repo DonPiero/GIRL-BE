@@ -1,0 +1,5 @@
+graph	model	instance	epsilon	decay	alpha	discount	run	time	percentage	Q size
+lpilazkdcnorsrf	6	[1, 3, 5, 7, 6, 0, 2, 4, 8]	1.0	0.92	0.99	0.99	0	55530.06	91.89	0
+tokianasnzebkqh	6	[1, 3, 5, 7, 6, 0, 2, 4, 8]	1.0	0.92	0.99	0.99	1	52921.86	91.89	0
+olmtyopiebzhfpn	6	[1, 3, 5, 7, 6, 0, 2, 4, 8]	1.0	0.92	0.99	0.99	2	56185.51	87.39	0
+cmsbcxpheccuqkl	6	[1, 3, 5, 7, 6, 0, 2, 4, 8]	1.0	0.92	0.99	0.99	3	54042.77	92.79	0
