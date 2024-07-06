@@ -5,14 +5,8 @@ import com.example.girlbe.dto.request.ExperimentCreateRequest;
 import com.example.girlbe.dto.response.ExperimentResponse;
 import com.example.girlbe.service.ExperimentService;
 import lombok.AllArgsConstructor;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.File;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -21,9 +15,8 @@ import java.util.stream.Collectors;
 public class ExperimentController {
     private final ExperimentService experimentService;
 
-    @GetMapping(path = "/")
-    public List<ExperimentResponse> getAllExperiments() {
-        Long id = 11L;
+    @GetMapping(path = "/user/{id}")
+    public List<ExperimentResponse> getAllExperiments(@PathVariable Long id) {
         return ExperimentAssembler.createExperimentResponseList(experimentService.getExperimentsByUserId(id));
     }
 
@@ -31,9 +24,8 @@ public class ExperimentController {
     public ExperimentResponse getExperimentById(@PathVariable Long id) {
         return ExperimentAssembler.createExperimentResponse(experimentService.getExperimentById(id));
     }
-    @PostMapping(path = "/create")
-    public List<ExperimentResponse> createExperiment(@RequestBody ExperimentCreateRequest experimentCreateRequest) {
-        Long id = 11L;
+    @PostMapping(path = "/create/{id}")
+    public List<ExperimentResponse> createExperiment(@PathVariable Long id, @RequestBody ExperimentCreateRequest experimentCreateRequest) {
         return ExperimentAssembler.createExperimentResponseList(experimentService.createExperiment(experimentCreateRequest, id));
     }
 

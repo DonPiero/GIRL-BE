@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
@@ -62,12 +63,12 @@ public class ExperimentAssembler {
                         .name(experimentCreateRequest.getName())
                         .graph(line[0])
                         .model(line[1])
-                        .instances(line[2])
+                        .instance(line[2])
                         .epsilon(line[3])
                         .decay(line[4])
                         .alpha(line[5])
                         .discount(line[6])
-                        .runs(line[7])
+                        .run(line[7])
                         .time(line[8])
                         .percentage(line[9])
                         .qSize(line[10])
@@ -76,7 +77,7 @@ public class ExperimentAssembler {
                         .generateGraph(experimentCreateRequest.getGenerateGraph())
                         .optimisation(experimentCreateRequest.getOptimisation())
                         .png(new File(line[0] + ".png"))
-                        .date(new Date())
+                        .date(LocalDate.now())
                         .user(user)
                         .state(ExperimentState.COMPLETED)
                         .build();
@@ -95,12 +96,12 @@ public class ExperimentAssembler {
                 .date(experiment.getDate().toString())
                 .state(experiment.getState().name())
                 .model(experiment.getModel())
-                .instances(experiment.getInstances())
+                .instance(experiment.getInstance())
                 .epsilon(experiment.getEpsilon())
                 .decay(experiment.getDecay())
                 .alpha(experiment.getAlpha())
                 .discount(experiment.getDiscount())
-                .runs(experiment.getRuns())
+                .run(experiment.getRun())
                 .epochs(experiment.getEpochs())
                 .limit(experiment.getLimit())
                 .optimisation(experiment.getOptimisation())

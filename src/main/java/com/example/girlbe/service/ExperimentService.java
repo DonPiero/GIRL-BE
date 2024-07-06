@@ -30,16 +30,19 @@ public class ExperimentService {
         return experimentRepository.findExperimentById(id).orElse(null);
     }
 
+    public void deleteExperimentById(Long id) {
+        experimentRepository.deleteById(id);
+    }
+
     public List<Experiment> createExperiment(ExperimentCreateRequest experimentCreateRequest, Long userId) {
         User user = userRepository.findById(userId).orElse(null);
         runScript(experimentCreateRequest);
         List<Experiment> experiments = ExperimentAssembler.createExperimentsFromCSV(experimentCreateRequest, user);
+        if (user != null) {
+            experiments.forEach(Experiment::setCompleted);
+        }
         experimentRepository.saveAll(experiments);
         return experiments;
-    }
-
-    public void deleteExperimentById(Long id) {
-        experimentRepository.deleteById(id);
     }
 
     private void runScript(ExperimentCreateRequest experimentCreateRequest) {

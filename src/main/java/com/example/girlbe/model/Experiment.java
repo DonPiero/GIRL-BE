@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.File;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="Experiments")
@@ -27,7 +27,7 @@ public class Experiment {
 
     @Column(name = "date")
     @NonNull
-    private Date date;
+    private LocalDate date;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
@@ -40,8 +40,8 @@ public class Experiment {
     @Column(name = "model")
     private String model;
 
-    @Column(name = "instances")
-    private String instances;
+    @Column(name = "instance")
+    private String instance;
 
     @Column(name = "epsilon")
     private String epsilon;
@@ -56,7 +56,7 @@ public class Experiment {
     private String discount;
 
     @Column(name = "runs")
-    private String runs;
+    private String run;
 
     @Column(name = "epochs")
     private String epochs;
@@ -85,5 +85,9 @@ public class Experiment {
     @Column(name = "png")
     private File png;
 
+    public void setCompleted(){
+        this.state = ExperimentState.COMPLETED;
+        this.user.completeExperiment();
+    }
 
 }

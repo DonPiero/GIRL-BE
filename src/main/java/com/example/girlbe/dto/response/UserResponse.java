@@ -15,6 +15,7 @@ public class UserResponse {
     private String country;
     private String city;
     private String email;
+    private String jwt;
     private Integer ongoingExp;
     private Integer completedExp;
 }

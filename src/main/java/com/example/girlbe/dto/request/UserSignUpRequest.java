@@ -1,6 +1,5 @@
 package com.example.girlbe.dto.request;
 
-
 import lombok.Getter;
 
 @Getter

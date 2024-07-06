@@ -5,15 +5,21 @@ import com.example.girlbe.dto.request.UserSignUpRequest;
 import com.example.girlbe.dto.response.UserResponse;
 import com.example.girlbe.model.User;
 import com.example.girlbe.model.enums.Rank;
+import com.example.girlbe.util.JwtService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 
 public class UserAssembler {
 
+    private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private static final JwtService jwtService = new JwtService();
+
     public static User createUser(UserSignUpRequest userSignUpRequest) {
         User user = new User();
         user.setEmail(userSignUpRequest.getEmail());
-        user.setPassword(userSignUpRequest.getPassword());
+        user.setPassword(passwordEncoder.encode(userSignUpRequest.getPassword()));
         user.setCompletedExp(0);
         user.setOngoingExp(0);
         user.setRank(Rank.BEGINNER);
@@ -34,6 +40,7 @@ public class UserAssembler {
                 .email(user.getEmail())
                 .completedExp(user.getCompletedExp())
                 .ongoingExp(user.getOngoingExp())
+                .jwt(jwtService.generateToken(user))
                 .build();
     }
 
@@ -51,7 +58,7 @@ public class UserAssembler {
                    .phoneNumber(!userRequest.getPhoneNumber().isEmpty() ? userRequest.getPhoneNumber() : user.getPhoneNumber())
                    .country(!userRequest.getCountry().isEmpty() ? userRequest.getCountry() : user.getCountry())
                    .city(!userRequest.getCity().isEmpty() ? userRequest.getCity() : user.getCity())
-                   .password(!userRequest.getPassword().isEmpty() ? userRequest.getPassword() : user.getPassword())
+                   .password(!userRequest.getPassword().isEmpty() ? passwordEncoder.encode(userRequest.getPassword()) : user.getPassword())
                    .build();
     }
 }

@@ -13,12 +13,12 @@ public class ExperimentResponse {
     private String date;
     private String state;
     private String model;
-    private String instances;
+    private String instance;
     private String epsilon;
     private String decay;
     private String alpha;
     private String discount;
-    private String runs;
+    private String run;
     private String epochs;
     private String limit;
     private String generateGraph;
