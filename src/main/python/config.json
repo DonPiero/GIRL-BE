@@ -1,1 +1,0 @@
-{"epsilon":[0.99],"decay":[0.99],"alpha":[0.99],"discount":[0.99],"limit":11111,"runs":3,"model":[6],"instances":[[1,3,5,7,6,0,2,4,8]],"optimisation":3,"no_of_epochs":111,"generate-graph":true}
